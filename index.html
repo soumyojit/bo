@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+var myWindow;
+
+function popUp() {
+
+var width=800;
+var height=400;
+
+var winURL =  window.location.href;
+var i = winURL.indexOf('.html');
+
+
+var s1;
+
+if( i!=-1)
+{
+
+s1 = winURL.substring(0,i);
+s1=s1+'1';
+s1=s1+winURL.substring(i);
+
+}
+
+
+
+
+  myWindow= window.open(s1,"popup","width=800,height=400");
+  myWindow.moveTo(((screen.width - width) / 2), ((screen.height - height) / 2));      
+  myWindow.focus();
+
+window.parent.close();
+
+}
+
+
+function openWin() {
+
+    myWindow=window.open("", "myWindow", "width=500, height=300");
+    myWindow = this.window;
+    myWindow.resizeTo(250, 250);   
+    myWindow.moveTo(500, 100);
+    myWindow.focus();
+    
+}
+
+function resizePage(){
+    var width = 600;
+    var height = 400;
+    window.resizeTo(width, height);
+    window.moveTo(((screen.width - width) / 2), ((screen.height - height) / 2));      
+  }
+
+
+function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, '\\$&');
+    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+}
+
+var foo = getParameterByName('foo'); // "lorem"
+var bar = getParameterByName('bar'); // "" (present with empty value)
+var baz = getParameterByName('baz'); // "" (present with no value)
+var qux = getParameterByName('qux'); // null (absent)
+
+document.getElementById("demo").innerHTML = foo ;
+</script>
+
+</head>
+
+
+<BODY onload="popUp();" >
+
+<p id="demo">dgdgdghdhgddgd</p>
+
+<script>
+document.getElementById("demo").innerHTML = s1 ;
+
+    
+</script>
+
+</body>
+</html>
